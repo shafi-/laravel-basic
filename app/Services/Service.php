@@ -1,12 +1,14 @@
 <?php
 
+namespace App\Services;
 use Illuminate\Http\Request;
+use Validator;
 
 class Service
 {
     protected $fields;
     public $model;
-    protected $rules;
+    protected $rules=[];
 
     public function __construct($model, $fields, $rules)
     {
@@ -33,10 +35,20 @@ class Service
     }
 
     public function prepareData(Request $request){
+        return $this->prepareFromArray($request->all());
+    }
+
+    public function prepareFromArray(array $info){
         $data = [];
         foreach ($this->fields as $field){
-            $data[$field] = $request->get($field);
+            $data[$field] = array_key_exists($field, $info) ? $info[$field] : null;
         }
         return $data;
     }
+
+    public function create($data)
+    {
+        return $this->model->create($data);
+    }
+
 }

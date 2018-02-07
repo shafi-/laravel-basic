@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Services\UserService;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -29,14 +30,17 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    protected $service;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
         $this->middleware('guest');
+        $this->service = $userService;
     }
 
     /**
@@ -50,6 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|max:15|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -62,10 +67,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $preparedData = $this->service->prepareFromArray($data);
+
+        $user = $this->service->create($preparedData);
+
+        return $user;
+
+//        return User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'phone' => $data['phone'],
+//            'password' => bcrypt($data['password']),
+//        ]);
     }
 }
