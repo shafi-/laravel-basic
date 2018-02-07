@@ -1,0 +1,68 @@
+#Hangouts--
+.Pros: Free to use. 
+
+.Cons: Google stopped api support in 2016.That means Api support may become down anytime.
+	No support to get call duration.
+	No support to start call directly. Rather we can just show suggestion to call a gmail account.
+
+	User will go out of your website control for calling. You don't have any control just after hangout-call button pressed.
+	Therefore, we should not use it.
+
+#Skype for business --
+.Pros: Free to use? Can start a call if skype-client is installed in device
+
+.Cons: No support to get call duration.
+	Browser dependency. 
+	User needs to install skype plugin to use skype other than Edge browser.
+	User will go out of your website control for calling. You don't have any control just after hangout-call button pressed.
+
+#Gruveo
+.Pros: In website video service. 
+	Video recording option
+	Have video conference option upto 12 user.
+	No email restriction need in registration. 
+
+.Cons: Costs $0.05 per user per call.
+
+#OpenTok
+.Pros: In website video service. 
+	Video recording option
+	No email restriction need in registration.
+
+.Cons: Cost: $0.00475~$0.00400 per minute per user
+
+#VSee
+.Pros: In website video service. 
+	Video recording option
+	No email restriction need in registration. 
+	Focused mainly on video conference feature.
+
+.Cons: Cost not speficied. Need to contact with them for pricing.
+
+#Twilio
+.Pros: In website video service. 
+	Video recording option
+	No email restriction need in registration.
+	Screen sharing, Almost full control on the video call
+
+.Cons: Cost not speficied. Need to contact with them for pricing.
+
+#Sinch
+.Pros: In website video service. 
+	Video recording option
+	No email restriction need in registration. 
+	Control over video call.
+	Free upto 2500 min/month
+
+.Cons: After 2500 min $0.003 per min per user
+	Special price for 250000+ min per month
+
+
+#Creating-Own-Video-Calling
+.Pros: No profit sharing
+	Full control over video call
+
+.Cons: Long development time
+	High development cost
+	Continuous server cost 
+		For example: amazon will cost: Around $80 per month ( Just for video calling )
